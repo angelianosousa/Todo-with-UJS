@@ -1,0 +1,17 @@
+<main id='tasks'>
+  <h1 class='mt-5'>Tasks</h1>
+  <ul id='tasks_incomplete'>
+    <%= render @tasks_incomplete %>
+  </ul>
+</main>
+
+<%= form_with model: @task, id:'task-form', local: false do |form| %>
+  <p>
+    <%= form.text_field :name, placeholder: 'Add task', required: true %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+

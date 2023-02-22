@@ -1,0 +1,10 @@
+<% if @task.errors.empty? %>
+  var taskLink = document.querySelector('#task-<%= @task.id %>')
+  taskLink.innerHTML = '<%= j link_to @task.name, "#show-#{@task.id}", remote: true, class:"show-buttons" %>'
+  
+  var taskName = document.querySelector('#task-name-<%= @task.id %>')
+  taskName.textContent = '<%= @task.name %>'
+
+  var taskDescription = document.querySelector('#task-description-<%= @task.id %>')
+  taskDescription.textContent = '<%= j @task.description %>'
+<% end %>

@@ -1,0 +1,6 @@
+<% if @task.errors.empty? %>
+  var tasks = document.querySelector('#tasks_incomplete');
+  tasks.insertAdjacentHTML('beforeend', "<%= j render(@task) %>");
+<% end %>
+
+document.querySelector('#task_name').value = '';

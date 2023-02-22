@@ -1,0 +1,42 @@
+<li>
+  <%= link_to task.name, "#show-#{task.id}", remote:true, class:"show-buttons", id: "task-#{task.id}" %>
+
+  <%= link_to "#edit-#{task.id}", remote: true, class:'edit-buttons' do %>
+    <i class='bi bi-pencil-fill'></i>
+  <% end %>
+
+  <%= link_to task, method: :delete, remote: true, class:'delete-task', data: { confirm: 'Are you sure?' } do %>
+    <i class='bi bi-trash-fill'></i>
+  <% end %>
+
+  <div class ='modal show-task' id='show-<%=task.id %>'>
+    <div class = 'modal-content'>
+      <h2 class='modal-title'> Task Details: </h2>
+      <h3 id ='task-name-<%=task.id %>' ><%= task.name %></h3>
+      <h3> Description:</h3>
+      <p id ='task-description-<%=task.id %>'>
+        <%= task.description %>
+      </p>
+      <button class='close' data-remote='true'>X</button>
+    </div>
+  </div>
+
+  <div class='modal edit-task' id='edit-<%= task.id %>'>
+    <div class='modal-content'>
+      <h2 class='modal-title'>Editing task:</h2>
+
+      <%= form_with model: task, class:'task-edit', local: false do |form| %>
+        <p>
+          <%= form.text_field :name, id:"task_edit-name-#{task.id}", required: true, placeholder: 'Task name' %>
+        </p>
+        <p>
+          <%= form.text_area :description, id:"task_edit-task-description-#{task.id}", placeholder: 'Task description' %>
+        </p>
+        <p>
+          <%= form.submit %>
+        </p>
+      <% end %>
+      <button class='close' data-remote='true'>X</button>
+    </div>
+  </div>
+</li>

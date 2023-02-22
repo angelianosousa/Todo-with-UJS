@@ -1,0 +1,5 @@
+<% if @task.errors.empty? %>
+  var item = document.querySelector('#task-name-<%= @task.id %>')
+  var listItem = item.closest('li')
+  listItem.remove()
+<% end %>
